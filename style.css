@@ -60,7 +60,7 @@ body {
 .hero--full {
   height: 100vh; /* Đặt chiều cao bằng 100% chiều cao của màn hình trình duyệt. */
   /* Đặt ảnh nền cho hero trang chủ, gồm một lớp màu gradient phủ lên trên ảnh thật. */
-  background-image: url("/image/home.jpg");
+  background-image: url('image/home.jpg');
 }
 /* Class '.hero--short' là một phiên bản đặc biệt khác của .hero. */
 .hero--short {

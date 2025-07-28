@@ -1,0 +1,265 @@
+/* =============================================== */
+/* --- 1. Reset & Styles Cơ Bản --- */
+/* =============================================== */
+
+/* ':root' đại diện cho phần tử gốc của tài liệu (thường là thẻ <html>).
+   Đây là nơi tốt nhất để khai báo các biến CSS để tái sử dụng trong toàn bộ file. */
+:root {
+  --primary-color: #007bff; /* Khai báo một biến tên là '--primary-color' với giá trị là mã màu xanh dương. */
+  --font-title: "Montserrat", sans-serif; /* Khai báo biến cho font chữ tiêu đề. */
+  --font-body: "Lora", serif; /* Khai báo biến cho font chữ nội dung thường. */
+}
+
+/* Chọn thẻ <html> */
+html {
+  font-size: 62.5%; /* Đặt kích thước font gốc là 62.5% của mặc định (16px * 0.625 = 10px). Giúp 1rem = 10px, dễ tính toán. */
+}
+
+/* Dấu '*' chọn tất cả các phần tử trên trang. */
+* {
+  box-sizing: border-box; /* Thay đổi cách tính kích thước: padding và border sẽ được tính vào bên trong width/height. */
+  margin: 0; /* Xóa toàn bộ lề ngoài mặc định của các phần tử. */
+  padding: 0; /* Xóa toàn bộ lề trong mặc định của các phần tử. */
+}
+
+/* Chọn thẻ <body>, là nơi chứa toàn bộ nội dung nhìn thấy được. */
+body {
+  font-family: var(
+    --font-body
+  ); /* Sử dụng giá trị của biến '--font-body' đã khai báo ở trên. */
+  font-size: 1.6rem; /* Đặt kích thước chữ mặc định là 16px (do 1rem = 10px). */
+  line-height: 1.6; /* Đặt khoảng cách dòng bằng 1.6 lần kích thước chữ, giúp văn bản dễ đọc. */
+  color: #333; /* Đặt màu chữ mặc định cho toàn trang là màu xám đậm. */
+  background-image: linear-gradient(
+    rgba(210, 237, 38, 0.5),
+    rgba(25, 165, 235, 0.5)
+  );
+}
+
+/* =============================================== */
+/* --- 2. KHỐI DÙNG CHUNG: HERO (Ảnh lớn đầu trang) --- */
+/* =============================================== */
+
+/* -- LỚP NỀN (BLOCK) -- */
+/* Class '.hero' định dạng cho khối chung, có thể tái sử dụng ở nhiều trang. */
+.hero {
+  width: 100%; /* Đặt chiều rộng của khối hero bằng 100% phần tử cha của nó. */
+  background-size: cover; /* Phóng to hoặc thu nhỏ ảnh nền để nó luôn che phủ toàn bộ khối hero. */
+  background-position: center; /* Căn ảnh nền ra chính giữa khối hero. */
+  background-repeat: no-repeat; /* Đảm bảo ảnh nền không bị lặp lại nếu kích thước ảnh nhỏ. */
+  display: flex; /* Kích hoạt chế độ Flexbox để căn chỉnh nội dung con bên trong. */
+  justify-content: center; /* Căn nội dung con ra chính giữa theo chiều ngang. */
+  align-items: center; /* Căn nội dung con ra chính giữa theo chiều dọc. */
+  text-align: center; /* Căn chữ bên trong ra giữa (hữu ích nếu nội dung có nhiều dòng). */
+  color: white; /* Đặt màu chữ cho tất cả nội dung bên trong là màu trắng. */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Tạo bóng cho chữ: đổ sang phải 2px, xuống dưới 2px, độ mờ 4px, màu đen mờ 70%. */
+}
+
+/* -- BIẾN THỂ (MODIFIERS) -- */
+/* Class '.hero--full' là một phiên bản đặc biệt của .hero. */
+.hero--full {
+  height: 100vh; /* Đặt chiều cao bằng 100% chiều cao của màn hình trình duyệt. */
+  /* Đặt ảnh nền cho hero trang chủ, gồm một lớp màu gradient phủ lên trên ảnh thật. */
+  background-image: url("/image/home.jpg");
+}
+/* Class '.hero--short' là một phiên bản đặc biệt khác của .hero. */
+.hero--short {
+  height: 70vh; /* Đặt chiều cao bằng 50% chiều cao của màn hình trình duyệt. */
+}
+
+/* -- CÁC THÀNH PHẦN CON (ELEMENTS) -- */
+/* Class '.hero__content' định dạng cho khối chứa nội dung chữ bên trong hero. */
+.hero__content {
+  max-width: 900px; /* Chiều rộng tối đa của khối nội dung là 900px. */
+  padding: 0 2rem; /* Tạo khoảng đệm 20px bên trái và phải. */
+}
+
+/* Class '.hero__subtitle' định dạng cho dòng phụ đề. */
+.hero__subtitle {
+  font-size: 3rem; /* Kích thước chữ 30px. */
+  font-style: italic; /* Kiểu chữ in nghiêng. */
+  font-weight: 500; /* Độ đậm của chữ ở mức trung bình. */
+  letter-spacing: 1px; /* Tăng khoảng cách giữa các ký tự thêm 1px. */
+  margin-bottom: 2rem; /* Tạo khoảng cách 20px với phần tử bên dưới nó. */
+}
+
+/* Class '.hero__title' định dạng chung cho tiêu đề trong hero. */
+.hero__title {
+  font-family: var(
+    --font-title
+  ); /* Sử dụng font chữ cho tiêu đề đã khai báo ở :root. */
+  font-weight: 700; /* Độ đậm của chữ là 700 (bold). */
+  text-transform: uppercase; /* Chuyển tất cả chữ thành chữ IN HOA. */
+  line-height: 1.1; /* Khoảng cách dòng bằng 1.1 lần kích thước chữ. */
+}
+/* Class '.hero__title--large' là phiên bản tiêu đề lớn cho trang chủ. */
+.hero__title--large {
+  font-size: 12rem; /* Kích thước chữ 120px. */
+  margin-bottom: 4rem; /* Khoảng cách với nút bấm bên dưới là 40px. */
+}
+/* Class '.hero__title--normal' là phiên bản tiêu đề thường cho các trang chi tiết. */
+.hero__title--normal {
+  font-size: 7rem; /* Kích thước chữ 70px. */
+}
+
+/* Class '.hero__button' định dạng cho nút bấm trong hero. */
+.hero__button {
+  display: inline-block; /* Hiển thị như một khối để có thể đặt padding, border. */
+  border: 3px solid white; /* Tạo viền dày 3px, liền nét, màu trắng. */
+  padding: 1.2rem 3rem; /* Tạo khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
+  text-decoration: none; /* Xóa gạch chân mặc định của thẻ <a>. */
+  font-family: var(--font-title); /* Sử dụng font chữ cho tiêu đề. */
+  font-weight: 700; /* Chữ in đậm. */
+  text-transform: uppercase; /* Chữ IN HOA. */
+  color: white; /* Màu chữ là màu trắng. */
+  transition: all 0.3s ease; /* Tạo hiệu ứng chuyển động mượt cho mọi thay đổi trong 0.3 giây. */
+  border-radius: 5px; /* Bo tròn các góc của nút 5px. */
+}
+/* Định dạng cho nút bấm khi người dùng di chuột lên trên. */
+.hero__button:hover {
+  background-color: white; /* Đổi màu nền thành màu trắng. */
+  color: #b1e113; /* Đổi màu chữ thành màu xanh lá mạ. */
+}
+
+/* =============================================== */
+/* --- 3. KHỐI DÙNG CHUNG: NỘI DUNG TRANG --- */
+/* =============================================== */
+/* Class '.page-content' định dạng cho khối bao quanh nội dung chính của các trang chi tiết. */
+.page-content {
+  max-width: 960px; /* Chiều rộng tối đa của khối là 960px. */
+  margin: 5rem auto; /* Căn giữa khối theo chiều ngang và tạo khoảng cách 50px trên/dưới. */
+  padding: 2rem; /* Tạo khoảng đệm 20px xung quanh bên trong khối. */
+  background-color: #fff; /* Đặt màu nền là màu trắng. */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08); /* Tạo bóng đổ nhẹ cho khối để nó nổi bật. */
+  border-radius: 8px; /* Bo tròn các góc 8px. */
+  background-size: cover; /* Phóng to/thu nhỏ ảnh nền để nó che phủ toàn bộ khối. */
+  font-size: 15px;
+}
+/* Class '.content-section' định dạng cho mỗi phần nội dung nhỏ bên trong .page-content. */
+.content-section {
+  margin-bottom: 4rem; /* Tạo khoảng cách 40px với phần bên dưới. */
+}
+/* Định dạng cho tiêu đề h2 bên trong một section. */
+.content-section h2 {
+  font-family: var(--font-title); /* Sử dụng font chữ cho tiêu đề. */
+  font-size: 3.2rem; /* Kích thước chữ 32px. */
+  margin-bottom: 1.8rem; /* Khoảng cách 18px với nội dung bên dưới. */
+  border-bottom: 3px solid #eee; /* Tạo đường gạch chân mờ, dày 3px. */
+  padding-bottom: 1rem; /* Khoảng cách 10px giữa chữ và đường gạch chân. */
+}
+/* Định dạng chung cho các đoạn văn (p) và mục danh sách (li). */
+.content-section p,
+.content-section li {
+  font-size: 1.7rem; /* Kích thước chữ 17px. */
+  line-height: 1.8; /* Khoảng cách dòng 1.8 lần, giúp cực kỳ dễ đọc. */
+  margin-bottom: 1.5rem; /* Khoảng cách 15px với dòng/mục tiếp theo. */
+}
+/* Định dạng cho thẻ danh sách <ul>. */
+.content-section ul {
+  list-style-position: inside; /* Đặt vị trí của dấu đầu dòng (bullet) nằm bên trong khối. */
+}
+
+/* --- Thay thế đoạn code 2 nút cũ của bạn bằng đoạn này --- */
+
+/* Định dạng cho nút "Quay lại". */
+.back-button {
+  display: inline-block; /* Hiển thị như một khối. */
+  padding: 1.2rem 3rem; /* Khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
+  background-color: #6c757d; /* Màu xám */
+  color: white; /* Màu chữ trắng. */
+  text-decoration: none; /* Xóa gạch chân. */
+  border-radius: 5px; /* Bo tròn góc 5px. */
+  font-weight: 700; /* Chữ in đậm. */
+  transition: background-color 0.3s ease; /* Tạo hiệu ứng chuyển đổi màu nền mượt. */
+  /* DÒNG MARGIN GÂY LỖI ĐÃ ĐƯỢC XÓA BỎ */
+}
+
+/* Định dạng cho nút khi di chuột lên. */
+.back-button:hover {
+  background-color: #5a6268; /* Đổi màu nền thành màu xám đậm hơn. */
+}
+
+/* Định dạng cho nút "Địa danh tiếp theo" */
+.finish-button {
+  display: inline-block; /* Hiển thị như một khối. */
+  padding: 1.2rem 3rem; /* Khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
+  background-color: #28a745; /* Màu xanh lá cây */
+  color: white; /* Màu chữ trắng. */
+  text-decoration: none; /* Xóa gạch chân. */
+  border-radius: 5px; /* Bo tròn góc 5px. */
+  font-weight: 700; /* Chữ in đậm. */
+  transition: background-color 0.3s ease; /* Tạo hiệu ứng chuyển đổi màu nền mượt. */
+}
+
+.finish-button:hover {
+  background-color: #218838; /* Đổi màu nền thành màu xanh lá cây đậm hơn. */
+}
+
+/* --- Thư viện ảnh (Photo Gallery) --- */
+
+/* Khối lưới chứa các ảnh */
+.photo-gallery {
+  display: grid; /* Kích hoạt chế độ Lưới (Grid) để tạo layout cột */
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Tạo ra 3 cột có chiều rộng bằng nhau */
+  gap: 1.5rem; /* Tạo khoảng cách 15px giữa các ảnh */
+}
+
+/* Định dạng cho mỗi mục ảnh trong lưới */
+.gallery-item img {
+  width: 100%; /* Ảnh sẽ luôn vừa vặn với chiều rộng của cột */
+  height: 250px; /* Đặt chiều cao cố định cho tất cả các ảnh */
+  object-fit: cover; /* Giữ đúng tỷ lệ và cắt bớt phần thừa để ảnh lấp đầy khung */
+  border-radius: 8px; /* Bo tròn góc ảnh */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động mượt */
+}
+
+/* Hiệu ứng khi di chuột lên ảnh */
+.gallery-item img:hover {
+  transform: scale(1.05); /* Phóng to ảnh lên một chút */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ để ảnh nổi bật hơn */
+  cursor: pointer; /* Biến con trỏ thành hình bàn tay */
+}
+
+/* --- Ảnh đơn lẻ (Single Image) --- */
+/* =============================================== */
+
+/* Định dạng cho khối bao bọc ảnh và chú thích */
+.single-image {
+  margin: 4rem 0; /* Tạo khoảng cách 40px trên và dưới với các phần khác */
+  width: 100%; /* Chiếm toàn bộ chiều rộng của khối nội dung cha */
+}
+
+/* Định dạng cho chính thẻ ảnh <img> */
+.single-image img {
+  width: 100%; /* Giúp ảnh luôn vừa vặn với khối .single-image */
+  height: auto; /* Chiều cao tự động điều chỉnh theo tỷ lệ ảnh */
+  display: block; /* Xóa khoảng trống thừa bên dưới ảnh */
+  border-radius: 8px; /* Bo tròn góc ảnh */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Tạo bóng đổ nhẹ */
+}
+/* --- 4. Responsive (Dành cho màn hình nhỏ) --- */
+/* =============================================== */
+/* Đoạn code này chỉ được áp dụng khi chiều rộng màn hình từ 768px trở xuống. */
+@media (max-width: 768px) {
+  .hero__title--large {
+    font-size: 5.5rem;
+    margin-bottom: 3rem;
+  } /* Giảm kích thước và khoảng cách của tiêu đề lớn. */
+  .hero__title--normal {
+    font-size: 4.5rem;
+  } /* Giảm kích thước của tiêu đề thường. */
+  .hero__subtitle {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  } /* Giảm kích thước và khoảng cách của phụ đề. */
+  .hero__button {
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+  } /* Giảm kích thước và padding của nút. */
+  .photo-gallery {
+    grid-template-columns: 1fr; /* Chỉ hiển thị 1 cột trên màn hình nhỏ */
+  }
+}

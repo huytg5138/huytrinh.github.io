@@ -106,7 +106,7 @@ body {
 .hero__button {
   display: inline-block; /* Hiển thị như một khối để có thể đặt padding, border. */
   border: 3px solid white; /* Tạo viền dày 3px, liền nét, màu trắng. */
-  padding: 1.2rem 3rem; /* Tạo khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
+  padding: 1rem 2.5rem; /* Tạo khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
   text-decoration: none; /* Xóa gạch chân mặc định của thẻ <a>. */
   font-family: var(--font-title); /* Sử dụng font chữ cho tiêu đề. */
   font-weight: 700; /* Chữ in đậm. */
@@ -164,7 +164,7 @@ body {
 /* Định dạng cho nút "Quay lại". */
 .back-button {
   display: inline-block; /* Hiển thị như một khối. */
-  padding: 1.2rem 3rem; /* Khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
+  padding: 1rem 2.8rem; /* Khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
   background-color: #6c757d; /* Màu xám */
   color: white; /* Màu chữ trắng. */
   text-decoration: none; /* Xóa gạch chân. */
@@ -182,7 +182,7 @@ body {
 /* Định dạng cho nút "Địa danh tiếp theo" */
 .finish-button {
   display: inline-block; /* Hiển thị như một khối. */
-  padding: 1.2rem 3rem; /* Khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
+  padding: 1rem 2.8rem; /* Khoảng đệm bên trong nút: 12px trên/dưới, 30px trái/phải. */
   background-color: #28a745; /* Màu xanh lá cây */
   color: white; /* Màu chữ trắng. */
   text-decoration: none; /* Xóa gạch chân. */
